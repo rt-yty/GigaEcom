@@ -7,7 +7,7 @@
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn app:app --reload
+uvicorn app.main:app --reload
 ```
 
 ## Запуск в Docker
@@ -18,6 +18,14 @@ docker run --rm -p 8000:8000 --env-file .env giga
 ```
 
 Сервис поднимется на `http://localhost:8000`, документация доступна на `/docs`.
+
+## Структура
+
+- `app/main.py` — FastAPI-приложение и чат-эндпоинт.
+- `app/api/routes.py` — CRUD-роуты категорий и товаров.
+- `app/db/session.py` — движок SQLAlchemy + сессии.
+- `app/models.py`, `app/schemas.py`, `app/crud.py` — модели, схемы и бизнес-логика.
+- `app/agent/` — LangGraph-пайплайн и инструменты.
 
 ## API
 

@@ -2,8 +2,8 @@ import json
 from langchain_core.tools import StructuredTool
 
 from .llm import llm
-from database import AsyncSessionLocal
-from crud import (
+from ..db.session import AsyncSessionLocal
+from ..crud import (
     create_category,
     create_product,
     get_category_by_name,
@@ -14,7 +14,7 @@ from crud import (
     delete_category,
     delete_product,
 )
-from schemas import (
+from ..schemas import (
     CategoryCreate,
     ProductCreate,
     CategoryUpdate,

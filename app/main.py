@@ -1,11 +1,12 @@
-from fastapi import FastAPI, HTTPException
-from langchain_core.messages import HumanMessage
 import uuid
 
-from database import init_db
-from schemas import ChatMessage, ChatResponse
-from agent_module.graph import app as agent_app
-from api import routers
+from fastapi import FastAPI, HTTPException
+from langchain_core.messages import HumanMessage
+
+from .db.session import init_db
+from .schemas import ChatMessage, ChatResponse
+from .agent.graph import app as agent_app
+from .api.routes import product_router, category_router
 
 app = FastAPI(title="Giga Agent API")
 
@@ -16,8 +17,8 @@ async def startup_event():
     print("База данных инициализирована")
 
 
-for router in routers:
-    app.include_router(router)
+app.include_router(product_router)
+app.include_router(category_router)
 
 
 @app.post("/chat", response_model=ChatResponse)

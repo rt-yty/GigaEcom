@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from database import get_db
-from schemas import (
+from ..db.session import get_db
+from ..schemas import (
     ProductCreate,
     ProductResponse,
     ProductUpdate,
@@ -10,7 +10,7 @@ from schemas import (
     CategoryResponse,
     CategoryUpdate,
 )
-from crud import (
+from ..crud import (
     create_product,
     get_all_products,
     get_product,

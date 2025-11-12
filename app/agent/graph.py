@@ -1,4 +1,4 @@
-from typing import TypedDict, Annotated, Any, cast
+from typing import TypedDict, Annotated
 
 from langchain_core.messages import BaseMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
